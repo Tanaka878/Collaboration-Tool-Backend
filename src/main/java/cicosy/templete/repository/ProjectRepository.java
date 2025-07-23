@@ -13,4 +13,6 @@ public interface ProjectRepository extends MongoRepository<Project, String> {
 
     @Override
     List<Project> findAll();
+
+    Project findProjectByProjectName(String projectName);
 }

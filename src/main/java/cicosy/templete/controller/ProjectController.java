@@ -5,6 +5,7 @@ import cicosy.templete.dto.ProjectDTO;
 import cicosy.templete.dto.ProjectsRequest;
 import cicosy.templete.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,6 +60,17 @@ public class ProjectController {
     public ResponseEntity<List<ProjectDTO>> getMyProjects(@RequestBody ProjectsRequest projectsRequest) {
         return projectService.getMyProjects(projectsRequest);
     }
+
+    @GetMapping("/project/{projectName}")
+    public ResponseEntity<Project> getProjectByName(@PathVariable String projectName) {
+        Project project = projectService.findByProjectName(projectName);
+        if (project != null) {
+            return ResponseEntity.ok(project);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 
 
 }

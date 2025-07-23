@@ -64,9 +64,14 @@ public class ProjectService {
             projectDTO.setName(project.getProjectName());
             projectDTOList.add(projectDTO);
 
+
         });
 
         System.out.println(projectDTOList);
         return ResponseEntity.ok(projectDTOList);
+    }
+
+    public Project findByProjectName(String projectName) {
+      return   projectRepository.findProjectByProjectName(projectName);
     }
 }
