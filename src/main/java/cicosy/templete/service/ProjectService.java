@@ -54,10 +54,9 @@ public class ProjectService {
 
     public ResponseEntity<List<ProjectDTO>> getMyProjects(ProjectsRequest projectsRequest) {
 
-        List<Project> byTeamMemberEmail = projectRepository.findByTeamMemberEmail(projectsRequest.getEmail());
+        List<Project> byTeamMemberEmail = projectRepository.findAll();
 
         List<ProjectDTO> projectDTOList = new ArrayList<>();
-
 
         byTeamMemberEmail.forEach(project -> {
             ProjectDTO projectDTO = new ProjectDTO();
