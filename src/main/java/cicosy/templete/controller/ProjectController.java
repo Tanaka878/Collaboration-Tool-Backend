@@ -56,9 +56,9 @@ public class ProjectController {
     }
 
     @PostMapping("/getMyProjects")
-    public ResponseEntity<List<ProjectDTO>> getMyProjects(@RequestBody ProjectsRequest  projectsRequest) {
-       return projectService.getMyProjects(projectsRequest);
-
+    public ResponseEntity<List<ProjectDTO>> getMyProjects(@RequestBody ProjectsRequest projectsRequest) {
+        return projectService.getMyProjects(projectsRequest);
     }
+
 
 }

@@ -30,27 +30,6 @@ public class UserController {
         User newUser = new User();
         return userService.registerUser(user.getUsername(),user.getEmail(), user.getPassword());
     }
-/*
-    @GetMapping("/{username}")
-    public ResponseEntity<String> getUserByUsername(@PathVariable String username) {
-        return userService.getUserByUsername(username);
-    }*/
-
-    /*@PutMapping("/update/{username}")
-    public ResponseEntity<String> updateUser(@PathVariable String username, @RequestBody UserDTO updatedUser) {
-        return userService.updateUser(username, updatedUser);
-    }
-*/
-   /* @DeleteMapping("/delete/{username}")
-    public ResponseEntity<String> deleteUser(@PathVariable String username) {
-        return userService.deleteUser(username);
-    }
-*/
-   /* @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
-      return   userService.authenticate(loginRequest);
-
-    }*/
 
     @PostMapping("/login")
     public ResponseEntity<User> login(@RequestBody LoginRequest request) {
