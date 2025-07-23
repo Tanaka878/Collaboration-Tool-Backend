@@ -62,9 +62,11 @@ public class ProjectService {
             ProjectDTO projectDTO = new ProjectDTO();
             projectDTO.setDescription(project.getDescription());
             projectDTO.setName(project.getProjectName());
+            projectDTOList.add(projectDTO);
 
         });
 
+        System.out.println(projectDTOList);
         return ResponseEntity.ok(projectDTOList);
     }
 }
