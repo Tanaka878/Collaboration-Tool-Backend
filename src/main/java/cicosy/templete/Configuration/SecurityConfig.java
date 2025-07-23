@@ -38,7 +38,7 @@ public class SecurityConfig {
         http
                 .cors() // Enable CORS support
                 .and()
-                .csrf().disable() // Disable CSRF for API calls (re-enable if needed)
+                .csrf().disable()
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers(
                                 "/", "/home", "/signup", "/login",

@@ -2,6 +2,8 @@ package cicosy.templete.service;
 
 
 import cicosy.templete.domain.User;
+import cicosy.templete.dto.LoginRequest;
+import org.springframework.http.ResponseEntity;
 
 public interface UserService {
     
@@ -16,4 +18,6 @@ public interface UserService {
     boolean existsByEmail(String email);
     
     void saveUser(User user);
+
+    ResponseEntity<User> authenticate(LoginRequest request);
 }

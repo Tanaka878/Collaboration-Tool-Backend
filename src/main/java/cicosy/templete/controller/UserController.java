@@ -3,8 +3,10 @@ package cicosy.templete.controller;
 
 import cicosy.templete.domain.User;
 
+import cicosy.templete.dto.LoginRequest;
 import cicosy.templete.dto.UserDTO;
 import cicosy.templete.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -48,4 +50,9 @@ public class UserController {
       return   userService.authenticate(loginRequest);
 
     }*/
+
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody LoginRequest request) {
+        return userService.authenticate(request);
+    }
 }

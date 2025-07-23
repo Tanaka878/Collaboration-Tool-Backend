@@ -14,11 +14,11 @@ public class CORSConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:3000"); // React dev server
+        config.addAllowedOrigin("http://localhost:3000");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         config.setAllowCredentials(false);
-        config.addAllowedOrigin("*"); // If truly public and no cookies needed
+        config.addAllowedOrigin("*");
 
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

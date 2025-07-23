@@ -36,10 +36,6 @@ public class ProjectController {
 
     @PostMapping("/create")
     public Project createProject(@RequestBody Project project) {
-
-        System.out.println("createProject-----------");
-
-        System.out.println(project);
         return projectService.createProject(project);
     }
 

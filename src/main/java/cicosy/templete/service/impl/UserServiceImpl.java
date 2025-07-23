@@ -2,12 +2,16 @@ package cicosy.templete.service.impl;
 
 
 import cicosy.templete.domain.User;
+import cicosy.templete.dto.LoginRequest;
 import cicosy.templete.repository.UserRepository;
 import cicosy.templete.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -69,5 +73,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public ResponseEntity<User> authenticate(LoginRequest request) {
+        Optional<User> byEmail = userRepository.findByEmail(request.getEmail());
+
+        if (byEmail.isPresent()) {
+            User user = byEmail.get();
+            if (passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+                return ResponseEntity.ok(user);
+            }
+            else  {
+                return ResponseEntity.badRequest().build();
+            }
+        }
+        else  {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 }
