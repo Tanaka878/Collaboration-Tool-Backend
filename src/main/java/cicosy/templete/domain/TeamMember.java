@@ -13,5 +13,5 @@ public class TeamMember{
     @GeneratedValue
     private Long id;
 
-
+    private String email;
 }

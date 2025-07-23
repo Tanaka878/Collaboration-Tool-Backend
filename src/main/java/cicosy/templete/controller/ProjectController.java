@@ -1,6 +1,8 @@
 package cicosy.templete.controller;
 
 import cicosy.templete.domain.Project;
+import cicosy.templete.dto.ProjectDTO;
+import cicosy.templete.dto.ProjectsRequest;
 import cicosy.templete.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +15,12 @@ import java.util.List;
 @CrossOrigin("*")
 public class ProjectController {
 
+    private final ProjectService projectService;
+
     @Autowired
-    private ProjectService projectService;
+    public ProjectController(ProjectService projectService) {
+        this.projectService = projectService;
+    }
 
     @GetMapping
     public List<Project> getAllProjects() {
@@ -52,4 +58,11 @@ public class ProjectController {
         projectService.deleteProject(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/getMyProjects")
+    public ResponseEntity<List<ProjectDTO>> getMyProjects(@RequestBody ProjectsRequest  projectsRequest) {
+       return projectService.getMyProjects(projectsRequest);
+
+    }
+
 }

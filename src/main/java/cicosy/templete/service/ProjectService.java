@@ -1,10 +1,14 @@
 package cicosy.templete.service;
 
 import cicosy.templete.domain.Project;
+import cicosy.templete.dto.ProjectDTO;
+import cicosy.templete.dto.ProjectsRequest;
 import cicosy.templete.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,5 +50,22 @@ public class ProjectService {
 
     public void deleteProject(String id) {
         projectRepository.deleteById(id);
+    }
+
+    public ResponseEntity<List<ProjectDTO>> getMyProjects(ProjectsRequest projectsRequest) {
+
+        List<Project> byTeamMemberEmail = projectRepository.findByTeamMemberEmail(projectsRequest.getEmail());
+
+        List<ProjectDTO> projectDTOList = new ArrayList<>();
+
+
+        byTeamMemberEmail.forEach(project -> {
+            ProjectDTO projectDTO = new ProjectDTO();
+            projectDTO.setDescription(project.getDescription());
+            projectDTO.setName(project.getProjectName());
+
+        });
+
+        return ResponseEntity.ok(projectDTOList);
     }
 }
