@@ -43,7 +43,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/", "/home", "/signup", "/login",
                                 "/css/**", "/js/**", "/images/**",
-                                "/api/documents/**", "/api/projects/**"
+                                "/api/documents/**", "/api/projects/**","/api/user/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
