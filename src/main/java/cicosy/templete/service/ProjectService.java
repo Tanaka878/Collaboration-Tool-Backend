@@ -55,6 +55,7 @@ public class ProjectService {
     public ResponseEntity<List<ProjectDTO>> getMyProjects(ProjectsRequest projectsRequest) {
 
         List<Project> byTeamMemberEmail = projectRepository.findAll();
+        System.out.println();
 
         List<ProjectDTO> projectDTOList = new ArrayList<>();
 
@@ -62,6 +63,7 @@ public class ProjectService {
             ProjectDTO projectDTO = new ProjectDTO();
             projectDTO.setDescription(project.getDescription());
             projectDTO.setName(project.getProjectName());
+            projectDTOList.add(projectDTO);
 
         });
 
