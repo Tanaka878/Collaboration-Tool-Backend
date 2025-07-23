@@ -53,20 +53,18 @@ public class ProjectService {
     }
 
     public ResponseEntity<List<ProjectDTO>> getMyProjects(ProjectsRequest projectsRequest) {
-
-        List<Project> byTeamMemberEmail = projectRepository.findAll();
-        System.out.println();
+        List<Project> allProjects = projectRepository.findAll();
 
         List<ProjectDTO> projectDTOList = new ArrayList<>();
 
-        byTeamMemberEmail.forEach(project -> {
+        for (Project project : allProjects) {
             ProjectDTO projectDTO = new ProjectDTO();
-            projectDTO.setDescription(project.getDescription());
             projectDTO.setName(project.getProjectName());
+            projectDTO.setDescription(project.getDescription());
             projectDTOList.add(projectDTO);
-
-        });
+        }
 
         return ResponseEntity.ok(projectDTOList);
     }
+
 }
