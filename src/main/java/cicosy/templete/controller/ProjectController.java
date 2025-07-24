@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/projects")
@@ -40,9 +41,10 @@ public class ProjectController {
         return projectService.createProject(project);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<?> updateProject(@PathVariable String id, @RequestBody Project project) {
         Project updated = projectService.updateProject(id, project);
+        System.out.println(ResponseEntity.ok("Serialized data : "+updated));
         if (updated != null) {
             return ResponseEntity.ok(updated);
         } else {
@@ -62,11 +64,11 @@ public class ProjectController {
         return projectService.getMyProjects(projectsRequest);
     }
 
-    @GetMapping("/project/{projectName}")
-    public ResponseEntity<Project> getProjectByName(@PathVariable String projectName) {
-        Project project = projectService.findByProjectName(projectName);
-        if (project != null) {
-            return ResponseEntity.ok(project);
+    @GetMapping("/project/{id}")
+    public ResponseEntity<Project> getProjectByName(@PathVariable String id) {
+        Optional<Project> project = projectService.getProjectById(id);
+        if (project.isPresent()) {
+            return ResponseEntity.ok(project.get());
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

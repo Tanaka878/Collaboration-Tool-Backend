@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Document(collection = "tasks") // This maps the class to a MongoDB collection named "tasks"
@@ -18,4 +19,6 @@ public class Task {
     private LocalDate startDate;
     private LocalDate finishDate;
     private String status;
+    private List<TeamMember> teamMembers;
+
 }
