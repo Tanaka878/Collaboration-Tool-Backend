@@ -17,10 +17,12 @@ public class ProjectService {
 
 
     private final ProjectRepository projectRepository;
+    private final NotificationServiceImpl notificationServiceImpl;
 
     @Autowired
-    public ProjectService(ProjectRepository projectRepository) {
+    public ProjectService(ProjectRepository projectRepository, NotificationServiceImpl notificationServiceImpl) {
         this.projectRepository = projectRepository;
+        this.notificationServiceImpl = notificationServiceImpl;
     }
 
     public List<Project> getAllProjects() {
@@ -32,7 +34,9 @@ public class ProjectService {
     }
 
     public Project createProject(Project project) {
-        System.out.println(project);
+        notificationServiceImpl.createNotification(project.getProjectName(), project.getTasks());
+
+
         return projectRepository.save(project);
     }
 

@@ -44,6 +44,7 @@ public class SecurityConfig {
                                 "/", "/home", "/signup", "/login",
                                 "/css/**", "/js/**", "/images/**",
                                 "/api/documents/**", "/api/projects/**","/api/user/**","/api/projects/delete/"
+                                        ,"/api/notifications/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
