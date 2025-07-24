@@ -1,7 +1,7 @@
 package cicosy.templete.controller;
 
 
-import cicosy.templete.domain.User;
+import   cicosy.templete.domain.User;
 import cicosy.templete.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

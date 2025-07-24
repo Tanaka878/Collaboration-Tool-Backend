@@ -18,6 +18,8 @@ public class CORSConfig {
         config.addAllowedMethod("*");
         config.setAllowCredentials(false);
         config.addAllowedOrigin("*");
+        config.addAllowedMethod("DELETE");
+
 
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

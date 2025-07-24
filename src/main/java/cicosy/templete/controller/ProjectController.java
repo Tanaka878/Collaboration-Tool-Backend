@@ -50,11 +50,12 @@ public class ProjectController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteProject(@PathVariable String id) {
         projectService.deleteProject(id);
         return ResponseEntity.noContent().build();
     }
+
 
     @PostMapping("/getMyProjects")
     public ResponseEntity<List<ProjectDTO>> getMyProjects(@RequestBody ProjectsRequest projectsRequest) {

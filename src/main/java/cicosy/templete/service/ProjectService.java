@@ -32,6 +32,7 @@ public class ProjectService {
     }
 
     public Project createProject(Project project) {
+        System.out.println(project);
         return projectRepository.save(project);
     }
 
@@ -62,6 +63,10 @@ public class ProjectService {
             ProjectDTO projectDTO = new ProjectDTO();
             projectDTO.setDescription(project.getDescription());
             projectDTO.setName(project.getProjectName());
+            projectDTO.setStartDate(project.getStartDate());
+            projectDTO.setFinishDate(project.getFinishDate());
+            projectDTO.setStatus(project.getStatus());
+            projectDTO.setId(project.getId());
             projectDTOList.add(projectDTO);
 
 
