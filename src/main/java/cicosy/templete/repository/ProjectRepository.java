@@ -15,4 +15,9 @@ public interface ProjectRepository extends MongoRepository<Project, String> {
     List<Project> findAll();
 
     Project findProjectByProjectName(String projectName);
+    @Query("{ 'tasks.teamMembers.email': ?0 }")
+    List<Project> findProjectsByTaskTeamMemberEmail(String email);
+
+
+
 }

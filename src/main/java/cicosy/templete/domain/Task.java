@@ -1,5 +1,6 @@
 package cicosy.templete.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,7 +17,10 @@ public class Task {
 
     private String name;
     private String description;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate finishDate;
     private String status;
     private List<TeamMember> teamMembers;
